@@ -1385,10 +1385,10 @@
                 document.querySelector('.instagram span').textContent = translations[lang].instagramHandle;
                 
                 // Update contact section
-                document.querySelector('.contact-container h2').textContent = translations[lang].contactTitle;
-                document.querySelector('.contact-links a:nth-child(1) span').textContent = translations[lang].instagram;
-                document.querySelector('.contact-links a:nth-child(2) span').textContent = translations[lang].whatsappNum;
-                document.querySelector('.copyright') = translations[lang].copyright;
+                document.querySelectorAll('.whatsapp-btn')[0].innerHTML = `<i class="fab fa-whatsapp"></i> ${translations[lang].whatsapp}`;
+                document.querySelectorAll('.whatsapp-btn')[1].innerHTML = `<i class="fab fa-whatsapp"></i> ${translations[lang].whatsapp}`;
+                document.querySelectorAll('.whatsapp-btn')[2].innerHTML = `<i class="fab fa-whatsapp"></i> ${translations[lang].whatsapp}`;
+                document.querySelector('.copyright').innerHTML = translations[lang].copyright;
             }
             
             // Mobile menu toggle
