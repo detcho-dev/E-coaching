@@ -1304,7 +1304,7 @@
                     contactTitle: "تواصل معنا",
                     instagram: "@1mostafa.k",
                     whatsappNum: "+20 109 098 7051",
-                    copyright.innerHTML: `&copy; 2025 إي-جيماوي. جميع الحقوق محفوظة. تمت اعمال التطوير بواسطة <a href="https://detcho-dev.github.io/Yossef-DEV/">Yossef DEV </a>`,
+                    copyright: `&copy; 2025 إي-جيماوي. جميع الحقوق محفوظة. تمت اعمال التطوير بواسطة <a href="https://detcho-dev.github.io/Yossef-DEV/">Yossef DEV </a>`,
                     home: "الرئيسية",
                     pricing: "الباقات",
                     contact: "اتصل بنا"
@@ -1371,9 +1371,9 @@
                     eliteBenefits[i].lastChild.textContent = translations[lang].eliteBenefits[i];
                 }
                 
-                document.querySelectorAll('.whatsapp-btn')[0].innerHTML = `<i class="fab fa-whatsapp"></i> ${translations[lang].whatsapp}`;
-                document.querySelectorAll('.whatsapp-btn')[1].innerHTML = `<i class="fab fa-whatsapp"></i> ${translations[lang].whatsapp}`;
-                document.querySelectorAll('.whatsapp-btn')[2].innerHTML = `<i class="fab fa-whatsapp"></i> ${translations[lang].whatsapp}`;
+                document.querySelectorAll('.whatsapp-btn')[0] = `<i class="fab fa-whatsapp"></i> ${translations[lang].whatsapp}`;
+                document.querySelectorAll('.whatsapp-btn')[1] = `<i class="fab fa-whatsapp"></i> ${translations[lang].whatsapp}`;
+                document.querySelectorAll('.whatsapp-btn')[2] = `<i class="fab fa-whatsapp"></i> ${translations[lang].whatsapp}`;
                 
                 document.querySelector('.custom-pricing p').textContent = translations[lang].customPricing;
                 document.querySelector('.custom-pricing .cta-button').textContent = translations[lang].contactUs;
@@ -1388,7 +1388,7 @@
                 document.querySelector('.contact-container h2').textContent = translations[lang].contactTitle;
                 document.querySelector('.contact-links a:nth-child(1) span').textContent = translations[lang].instagram;
                 document.querySelector('.contact-links a:nth-child(2) span').textContent = translations[lang].whatsappNum;
-                document.querySelector('.copyright').innerHTML = translations[lang].copyright;
+                document.querySelector('.copyright') = translations[lang].copyright;
             }
             
             // Mobile menu toggle
