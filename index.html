@@ -1009,12 +1009,41 @@
             animation: fadeInUp 0.6s ease-out forwards;
         }
 
-        .a {
-            all: unset;
-            color: white;
-            text-decoration: underline;
-            cursor: pointer;
-        }
+        .copyright a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    position: relative;
+    padding: 0 4px;
+}
+
+.copyright a::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background-color: var(--accent);
+    transition: var(--transition);
+}
+
+.copyright a:hover {
+    color: var(--primary);
+}
+
+.copyright a:hover::after {
+    width: 100%;
+}
+
+.dark .copyright a {
+    color: var(--accent);
+}
+
+.dark .copyright a:hover {
+    color: #fff;
+}
     </style>
 </head>
 <body>
@@ -1229,7 +1258,7 @@
                     contactTitle: "Get In Touch",
                     instagram: "@1mostafa.k",
                     whatsappNum: "+20 109 098 7051",
-                    copyright.innerHTML: `&copy; 2025 E-Gymmawy. All rights reserved. Developed By <a href="https://detcho-dev.github.io/Yossef-DEV/">Yossef DEV </a>`,
+                    copyright: '&copy; 2025 E-Gymmawy. All rights reserved. Developed By <a href="https://detcho-dev.github.io/Yossef-DEV/">Yossef DEV </a>',
                     home: "Home",
                     pricing: "Pricing",
                     contact: "Contact"
