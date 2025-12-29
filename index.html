@@ -789,193 +789,66 @@
             }
         }
 
-        @media (max-width: 768px) {
-            :root {
-                --radius: 14px;
-                --section-padding: 4.5rem 0;
-            }
-            
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-            
-            .section-title p {
-                font-size: 1.1rem;
-            }
-            
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-text p {
-                font-size: 1.3rem;
-            }
-            
-            .price {
-                font-size: 2.5rem;
-            }
-            
-            .coach-name {
-                font-size: 1.4rem;
-            }
-            
-            .social-links, 
-            .contact-links {
-                gap: 2rem;
-            }
-            
-            .social-link i {
-                font-size: 3.5rem;
-                width: 80px;
-                height: 80px;
-            }
-            
-            .contact-link i {
-                font-size: 2.5rem;
-            }
-        }
+        /* Mobile Navigation Optimizations */
+@media (max-width: 768px) {
+  nav {
+    padding: 0.8rem 0;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+  }
+  
+  .logo i {
+    font-size: 1.1rem;
+  }
+  
+  .theme-toggle, .lang-toggle {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.85rem;
+  }
+  
+  .theme-icon {
+    font-size: 0.9rem;
+  }
+}
 
-        @media (max-width: 576px) {
-            :root {
-                --section-padding: 3.5rem 0;
-                --radius: 12px;
-            }
-            
-            nav {
-                padding: 1rem 0;
-            }
-            
-            .logo {
-                font-size: 1.6rem;
-            }
-            
-            .hero-text h1 {
-                font-size: 2.1rem;
-            }
-            
-            .hero-text p {
-                font-size: 1.2rem;
-            }
-            
-            .hero-image {
-                height: 350px;
-            }
-            
-            .coach-name {
-                font-size: 1.3rem;
-            }
-            
-            .price {
-                font-size: 2.2rem;
-            }
-            
-            .price span {
-                font-size: 1rem;
-            }
-            
-            .pricing-card {
-                padding: 1.8rem 1.5rem;
-            }
-            
-            .pricing-card h3 {
-                font-size: 1.6rem;
-            }
-            
-            .benefits li {
-                font-size: 0.9rem;
-                padding: 0.6rem 0;
-            }
-            
-            .benefits li i {
-                font-size: 0.95rem;
-            }
-            
-            .whatsapp-btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.95rem;
-            }
-            
-            .custom-pricing p {
-                font-size: 1.4rem;
-            }
-            
-            .social-link i, 
-            .contact-link i {
-                font-size: 3rem;
-                width: 70px;
-                height: 70px;
-            }
-            
-            .social-link span, 
-            .contact-link span {
-                font-size: 1.1rem;
-            }
-            
-            .contact-container h2 {
-                font-size: 2rem;
-            }
-            
-            .copyright {
-                font-size: 0.95rem;
-                padding: 1rem 0;
-            }
-            
-            .section-title h2 {
-                font-size: 1.9rem;
-            }
-            
-            .section-title h2::after {
-                width: 60px;
-            }
-        }
+@media (max-width: 450px) {
+  nav {
+    padding: 0.6rem 0;
+  }
+  
+  .logo {
+    font-size: 1.3rem;
+  }
+  
+  .logo i {
+    font-size: 0.9rem;
+  }
+  
+  .theme-toggle, .lang-toggle {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    min-width: 36px;
+  }
+  
+  .theme-icon {
+    font-size: 0.8rem;
+  }
+  
+  .current-lang {
+    display: inline-block;
+    min-width: 24px;
+    text-align: center;
+  }
+}
 
-        @media (max-width: 450px) {
-            .hero-text h1 {
-                font-size: 1.9rem;
-            }
-            
-            .hero-text p {
-                font-size: 1.1rem;
-            }
-            
-            .cta-button {
-                padding: 0.8rem 1.8rem;
-                font-size: 1rem;
-            }
-            
-            .hero-image {
-                height: 300px;
-            }
-            
-            .coach-name {
-                font-size: 1.2rem;
-            }
-            
-            .price {
-                font-size: 2rem;
-            }
-            
-            .popular-badge {
-                font-size: 0.9rem;
-                padding: 0.25rem 0.9rem;
-            }
-            
-            .social-link i, 
-            .contact-link i {
-                font-size: 2.7rem;
-                width: 65px;
-                height: 65px;
-            }
-            
-            .social-link span, 
-            .contact-link span {
-                font-size: 1rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-        }
+/* Style for the single language toggle button */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
         /* Language Specific Styles */
         html[lang="ar"] {
@@ -1047,22 +920,21 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="container nav-menu">
-        <a href="#" class="logo">
-            <i class="fas fa-dumbbell"></i>
-            E-Gymmawy
-        </a>
-        
-        <div class="nav-actions">
-            <button class="theme-toggle active" id="themeToggle">
-                <i class="fas fa-moon theme-icon"></i>
-            </button>
-            <button class="lang-toggle active" id="enLang">EN</button>
-            <button class="lang-toggle" id="arLang">AR</button>
-           
-        </div>
-    </nav>
+    <!-- Navigation - معدّل بالكامل -->
+<nav class="container nav-menu">
+  <a href="#" class="logo">
+    <i class="fas fa-dumbbell"></i>
+    E-Gymmawy
+  </a>
+  <div class="nav-actions">
+    <button class="theme-toggle active" id="themeToggle">
+      <i class="fas fa-moon theme-icon"></i>
+    </button>
+    <button class="lang-toggle active" id="langToggle">
+      <span class="current-lang">EN</span>
+    </button>
+  </div>
+</nav>
 
     <!-- Header/Hero Section -->
     <header id="home" class="container">
@@ -1305,24 +1177,26 @@
                 }
             };
             
-            // Set initial language
+            // Language Toggle - Single button version
+            const langToggle = document.getElementById('langToggle');
+            const currentLangSpan = document.querySelector('.current-lang');
             let currentLang = 'en';
-            updateLanguageUI(currentLang);
-            
-            enLang.addEventListener('click', () => {
-                currentLang = 'en';
-                updateLanguageUI('en');
-                document.documentElement.lang = 'en';
-                enLang.classList.add('active');
-                arLang.classList.remove('active');
-            });
-            
-            arLang.addEventListener('click', () => {
-                currentLang = 'ar';
-                updateLanguageUI('ar');
-                document.documentElement.lang = 'ar';
-                arLang.classList.add('active');
-                enLang.classList.remove('active');
+
+            // Set initial language based on browser preference
+            const browserLang = navigator.language || navigator.userLanguage;
+            if (browserLang.startsWith('ar')) {
+              currentLang = 'ar';
+              currentLangSpan.textContent = 'AR';
+              document.documentElement.lang = 'ar';
+              langToggle.classList.add('active');
+            }
+
+            langToggle.addEventListener('click', () => {
+              currentLang = currentLang === 'en' ? 'ar' : 'en';
+              updateLanguageUI(currentLang);
+              document.documentElement.lang = currentLang;
+              currentLangSpan.textContent = currentLang.toUpperCase();
+              // No need for active class management with single button
             });
             
             function updateLanguageUI(lang) {
