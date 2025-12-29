@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Gymmawy - Professional Fitness Coaching</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Font: Space Grotesk -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
+
     <style>
         :root {
             --primary: #4361ee;
@@ -21,6 +26,8 @@
             --radius: 16px;
             --container: 1200px;
             --section-padding: 6rem 0;
+            --logo-font-size: 1.8rem;
+            --icon-font-size: 1.6rem;
         }
 
         .dark {
@@ -31,6 +38,31 @@
             --gray: #adb5bd;
             --shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+          }
+
+          .logo {
+            font-family: "Space Grotesk", sans-serif;
+            font-weight: 700;
+            font-size: var(--logo-font-size);
+            background: linear-gradient(90deg, #6c5ce7, #00cec9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            margin: 0;
+          }
+
+          .logo-icon {
+            color: #6c5ce7;
+            font-size: var(--icon-font-size);
+          }
 
         * {
             margin: 0;
@@ -1044,7 +1076,7 @@
             </div>
         </div>
         <div class="copyright">
-            &copy; 2025 E-Gymmawy. All rights reserved. Developed By <a href="https://detcho-dev.github.io/Yossef-DEV/">Yossef DEV </a>
+            &copy; 2025 E-Gymmawy. All rights reserved. Developed By <div id="my-logo" style="--logo-font-size: 2.2rem; --icon-font-size: 1.9rem;"></div>
         </div>
     </footer>
 
@@ -1124,7 +1156,7 @@
                     contactTitle: "Get In Touch",
                     instagram: "@1mostafa.k",
                     whatsappNum: "+20 109 098 7051",
-                    copyright: '&copy; 2025 E-Gymmawy. All rights reserved. Developed By <a href="https://detcho-dev.github.io/Yossef-DEV/">Yossef DEV </a>',
+                    copyright: '&copy; 2025 E-Gymmawy. All rights reserved. Developed By <div id="my-logo" style="--logo-font-size: 2.2rem; --icon-font-size: 1.9rem;"></div>',
                     home: "Home",
                     pricing: "Pricing",
                     contact: "Contact"
@@ -1170,12 +1202,16 @@
                     contactTitle: "تواصل معنا",
                     instagram: "@1mostafa.k",
                     whatsappNum: "+20 109 098 7051",
-                    copyright: `&copy; 2025 إي-جيماوي. جميع الحقوق محفوظة. تم تطوير الموقع بواسطة <a href="https://detcho-dev.github.io/Yossef-DEV/">Yossef DEV </a>`,
+                    copyright: `&copy; 2025 إي-جيماوي. جميع الحقوق محفوظة. تم تطوير الموقع بواسطة <div id="my-logo" style="--logo-font-size: 2.2rem; --icon-font-size: 1.9rem;"></div>`,
                     home: "الرئيسية",
                     pricing: "الباقات",
                     contact: "اتصل بنا"
                 }
             };
+
+            fetch('https://detcho-dev.github.io/Yossef-DEV/logo.html')
+                .then(res => res.text())
+                .then(html => document.getElementById('my-logo').innerHTML = html);
             
             // Language Toggle - Single button version
             const langToggle = document.getElementById('langToggle');
