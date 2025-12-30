@@ -949,6 +949,26 @@
 .dark .copyright a:hover {
     color: #fff;
 }
+
+        .logo-small {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          text-decoration: none;
+          color: var(--accent);
+          font-weight: 600;
+          font-size: var(--logo-font-size, 1rem);
+          transition: var(--transition);
+        }
+
+        .logo-small:hover {
+          color: var(--primary);
+        }
+
+        .logo-small i {
+          color: #6c5ce7;
+          font-size: var(--icon-font-size, 0.9rem);
+        }
     </style>
 </head>
 <body>
@@ -1076,7 +1096,11 @@
             </div>
         </div>
         <div class="copyright">
-            &copy; 2025 E-Gymmawy. All rights reserved. Developed By <span><div id="my-logo" style="--logo-font-size: 1rem; --icon-font-size: 0.7rem;"></div></span>
+          &copy; 2025 E-Gymmawy. All rights reserved. Developed By 
+          <a href="https://detcho-dev.github.io/Yossef-DEV/" class="logo-small">
+              <i class="fas fa-code"></i>
+              <span>Yossef DEV</span>
+          </a>
         </div>
     </footer>
 
@@ -1156,7 +1180,7 @@
                     contactTitle: "Get In Touch",
                     instagram: "@1mostafa.k",
                     whatsappNum: "+20 109 098 7051",
-                    copyright: '&copy; 2025 E-Gymmawy. All rights reserved. Developed By <div id="my-logo" style="--logo-font-size: 2.2rem; --icon-font-size: 1.9rem;"></div>',
+                    copyright: '&copy; 2025 E-Gymmawy. All rights reserved. Developed By <a href="https://detcho-dev.github.io/Yossef-DEV/" class="logo-small"><i class="fas fa-code"></i><span>Yossef DEV</span></a>',
                     home: "Home",
                     pricing: "Pricing",
                     contact: "Contact"
@@ -1202,7 +1226,7 @@
                     contactTitle: "تواصل معنا",
                     instagram: "@1mostafa.k",
                     whatsappNum: "+20 109 098 7051",
-                    copyright: `&copy; 2025 إي-جيماوي. جميع الحقوق محفوظة. تم تطوير الموقع بواسطة <div id="my-logo" style="--logo-font-size: 2.2rem; --icon-font-size: 1.9rem;"></div>`,
+                    copyright: `&copy; 2025 إي-جيماوي. جميع الحقوق محفوظة. تم تطوير الموقع بواسطة <a href="https://detcho-dev.github.io/Yossef-DEV/" class="logo-small"><i class="fas fa-code"></i><span>Yossef DEV</span></a>`,
                     home: "الرئيسية",
                     pricing: "الباقات",
                     contact: "اتصل بنا"
