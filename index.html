@@ -529,6 +529,127 @@
             font-weight: 600;
         }
 
+        /* Gallery Section */
+        .gallery-section {
+            background: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark .gallery-section {
+            background: #121212;
+        }
+
+        .gallery-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center left, rgba(67, 97, 238, 0.05) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .gallery-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+            padding: 1.5rem 1rem 1rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item-overlay span {
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .gallery-item-overlay span i {
+            color: var(--accent);
+        }
+
+        .gallery-item-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.3rem 0.9rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 3px 10px rgba(67, 97, 238, 0.4);
+        }
+
+        .gallery-cta {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-cta .cta-button {
+            font-size: 1.15rem;
+            padding: 1rem 2.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-color: transparent;
+        }
+
+        .gallery-cta .cta-button:hover {
+            box-shadow: 0 8px 30px rgba(67, 97, 238, 0.5);
+        }
+
+        .gallery-cta .cta-button i {
+            margin-right: 0.5rem;
+        }
+
         /* Channels Section */
         .channels {
             background: linear-gradient(135deg, var(--secondary) 0%, #1a2a3a 100%);
@@ -824,6 +945,19 @@
             .nav-menu .nav-actions {
                 margin-left: auto;
             }
+
+            .gallery-preview {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-preview {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
 
         /* Mobile Navigation Optimizations */
@@ -929,7 +1063,7 @@
     </style>
 </head>
 <body>
-    <!-- Navigation - معدّل بالكامل -->
+    <!-- Navigation -->
 <nav class="container nav-menu">
   <a href="#" class="logo">
     <i class="fas fa-dumbbell"></i>
@@ -1017,6 +1151,31 @@
         </div>
     </section>
 
+    <!-- Before/After Gallery Section -->
+    <section id="gallery" class="section gallery-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Before/After Gallery</h2>
+                <p>Real results from real clients — see the transformations achieved with E-Gymmawy training plans</p>
+            </div>
+            <div class="gallery-preview">
+                <div class="gallery-item" onclick="window.open('https://www.instagram.com/1mostafa.k?igsh=bHUzaDBzaGM3N243', '_blank')">
+                    <img src="https://image.qwenlm.ai/public_source/df844dcb-2fce-4c24-babf-b5ab069827d6/1e4e6af36-cc0d-45d4-8e12-7832134ba267.png" alt="Fitness Transformation 1" loading="lazy">
+                    <div class="gallery-item-badge">BEFORE / AFTER</div>
+                    <div class="gallery-item-overlay">
+                        <span><i class="fas fa-expand"></i> View Full Gallery</span>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="gallery-cta">
+                <a href="https://www.instagram.com/1mostafa.k?igsh=bHUzaDBzaGM3N243" target="_blank" class="cta-button">
+                    <i class="fas fa-images"></i> Go to Gallery
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Channels Section -->
     <section class="section channels">
         <div class="container channels-container">
@@ -1088,10 +1247,25 @@
             });
             
             // Language Toggle
-            const enLang = document.getElementById('enLang');
-            const arLang = document.getElementById('arLang');
-            const mobileToggle = document.getElementById('mobileToggle');
-            const navLinks = document.getElementById('navLinks');
+            const langToggle = document.getElementById('langToggle');
+            const currentLangSpan = document.querySelector('.current-lang');
+            let currentLang = 'en';
+
+            // Set initial language based on browser preference
+            const browserLang = navigator.language || navigator.userLanguage;
+            if (browserLang.startsWith('ar')) {
+              currentLang = 'ar';
+              currentLangSpan.textContent = 'AR';
+              document.documentElement.lang = 'ar';
+              langToggle.classList.add('active');
+            }
+
+            langToggle.addEventListener('click', () => {
+              currentLang = currentLang === 'en' ? 'ar' : 'en';
+              updateLanguageUI(currentLang);
+              document.documentElement.lang = currentLang;
+              currentLangSpan.textContent = currentLang.toUpperCase();
+            });
             
             // Translation data
             const translations = {
@@ -1139,7 +1313,12 @@
                     copyright: '&copy; 2025 E-Gymmawy. All rights reserved. Developed By <a href="https://detcho-dev.github.io/Yossef-DEV/" ><img src="https://detcho-dev.github.io/Yossef-DEV/logo.png"></a>',
                     home: "Home",
                     pricing: "Pricing",
-                    contact: "Contact"
+                    contact: "Contact",
+                    galleryTitle: "Before/After Gallery",
+                    galleryDesc: "Real results from real clients — see the transformations achieved with E-Gymmawy training plans",
+                    galleryBadge: "BEFORE / AFTER",
+                    galleryOverlay: "View Full Gallery",
+                    galleryBtn: "Go to Gallery"
                 },
                 ar: {
                     welcome: "مرحباً بكم في إي-جيماوي",
@@ -1185,95 +1364,83 @@
                     copyright: `&copy; 2025 إي-جيماوي. جميع الحقوق محفوظة. تم تطوير الموقع بواسطة <a href="https://detcho-dev.github.io/Yossef-DEV/" ><img src="https://detcho-dev.github.io/Yossef-DEV/logo.png"></a>`,
                     home: "الرئيسية",
                     pricing: "الباقات",
-                    contact: "اتصل بنا"
+                    contact: "اتصل بنا",
+                    galleryTitle: "معرض قبل وبعد",
+                    galleryDesc: "نتائج حقيقية من عملاء حقيقيين — شاهد التحولات التي تم تحقيقها مع خطط تدريب إي-جيماوي",
+                    galleryBadge: "قبل / بعد",
+                    galleryOverlay: "عرض المعرض الكامل",
+                    galleryBtn: "الذهاب إلى المعرض"
                 }
             };
-
-            fetch('https://detcho-dev.github.io/Yossef-DEV/logo.html')
-                .then(res => res.text())
-                .then(html => document.getElementById('my-logo').innerHTML = html);
-            
-            // Language Toggle - Single button version
-            const langToggle = document.getElementById('langToggle');
-            const currentLangSpan = document.querySelector('.current-lang');
-            let currentLang = 'en';
-
-            // Set initial language based on browser preference
-            const browserLang = navigator.language || navigator.userLanguage;
-            if (browserLang.startsWith('ar')) {
-              currentLang = 'ar';
-              currentLangSpan.textContent = 'AR';
-              document.documentElement.lang = 'ar';
-              langToggle.classList.add('active');
-            }
-
-            langToggle.addEventListener('click', () => {
-              currentLang = currentLang === 'en' ? 'ar' : 'en';
-              updateLanguageUI(currentLang);
-              document.documentElement.lang = currentLang;
-              currentLangSpan.textContent = currentLang.toUpperCase();
-              // No need for active class management with single button
-            });
             
             function updateLanguageUI(lang) {
-                
+                const t = translations[lang];
                 
                 // Update hero section
-                document.querySelector('.hero-text h1').textContent = translations[lang].welcome;
-                document.querySelector('.hero-text p').textContent = translations[lang].coach;
-                document.querySelector('.cta-button').textContent = translations[lang].getStarted;
+                document.querySelector('.hero-text h1').textContent = t.welcome;
+                document.querySelector('.hero-text p').textContent = t.coach;
+                document.querySelector('.hero-text .cta-button').textContent = t.getStarted;
                 
                 // Update pricing section
-                document.querySelector('#pricing .section-title h2').textContent = translations[lang].pricingTitle;
-                document.querySelector('#pricing .section-title p').textContent = translations[lang].pricingDesc;
+                document.querySelector('#pricing .section-title h2').textContent = t.pricingTitle;
+                document.querySelector('#pricing .section-title p').textContent = t.pricingDesc;
                 
                 // Update pricing cards
-                document.querySelectorAll('.pricing-card h3')[0].textContent = translations[lang].basic;
-                document.querySelectorAll('.pricing-card h3')[1].textContent = translations[lang].premium;
-                document.querySelectorAll('.pricing-card h3')[2].textContent = translations[lang].elite;
+                document.querySelectorAll('.pricing-card h3')[0].textContent = t.basic;
+                document.querySelectorAll('.pricing-card h3')[1].textContent = t.premium;
+                document.querySelectorAll('.pricing-card h3')[2].textContent = t.elite;
                 
-                document.querySelectorAll('.price span')[0].textContent = translations[lang].monthly;
-                document.querySelectorAll('.price span')[1].textContent = translations[lang].monthly;
-                document.querySelectorAll('.price span')[2].textContent = translations[lang].monthly;
+                document.querySelectorAll('.price span')[0].textContent = t.monthly;
+                document.querySelectorAll('.price span')[1].textContent = t.monthly;
+                document.querySelectorAll('.price span')[2].textContent = t.monthly;
                 
                 const basicBenefits = document.querySelectorAll('.benefits')[0].children;
                 const premiumBenefits = document.querySelectorAll('.benefits')[1].children;
                 const eliteBenefits = document.querySelectorAll('.benefits')[2].children;
                 
                 for (let i = 0; i < basicBenefits.length; i++) {
-                    basicBenefits[i].lastChild.textContent = translations[lang].basicBenefits[i];
+                    basicBenefits[i].childNodes[basicBenefits[i].childNodes.length - 1].textContent = t.basicBenefits[i];
                 }
                 
                 for (let i = 0; i < premiumBenefits.length; i++) {
-                    premiumBenefits[i].lastChild.textContent = translations[lang].premiumBenefits[i];
+                    premiumBenefits[i].childNodes[premiumBenefits[i].childNodes.length - 1].textContent = t.premiumBenefits[i];
                 }
                 
                 for (let i = 0; i < eliteBenefits.length; i++) {
-                    eliteBenefits[i].lastChild.textContent = translations[lang].eliteBenefits[i];
+                    eliteBenefits[i].childNodes[eliteBenefits[i].childNodes.length - 1].textContent = t.eliteBenefits[i];
                 }
                 
-                document.querySelectorAll('.whatsapp-btn')[0] = `<i class="fab fa-whatsapp"></i> ${translations[lang].whatsapp}`;
-                document.querySelectorAll('.whatsapp-btn')[1] = `<i class="fab fa-whatsapp"></i> ${translations[lang].whatsapp}`;
-                document.querySelectorAll('.whatsapp-btn')[2] = `<i class="fab fa-whatsapp"></i> ${translations[lang].whatsapp}`;
+                document.querySelectorAll('.whatsapp-btn').forEach(btn => {
+                    btn.innerHTML = `<i class="fab fa-whatsapp"></i> ${t.whatsapp}`;
+                });
                 
-                document.querySelector('.custom-pricing p').textContent = translations[lang].customPricing;
-                document.querySelector('.custom-pricing .cta-button').textContent = translations[lang].contactUs;
+                document.querySelector('.custom-pricing p').textContent = t.customPricing;
+                document.querySelector('.custom-pricing .cta-button').textContent = t.contactUs;
+                
+                // Update gallery section
+                document.querySelector('.gallery-section .section-title h2').textContent = t.galleryTitle;
+                document.querySelector('.gallery-section .section-title p').textContent = t.galleryDesc;
+                document.querySelectorAll('.gallery-item-badge').forEach(badge => {
+                    badge.textContent = t.galleryBadge;
+                });
+                document.querySelectorAll('.gallery-item-overlay span').forEach(overlay => {
+                    overlay.innerHTML = `<i class="fas fa-expand"></i> ${t.galleryOverlay}`;
+                });
+                document.querySelector('.gallery-cta .cta-button').innerHTML = `<i class="fas fa-images"></i> ${t.galleryBtn}`;
                 
                 // Update channels section
-                document.querySelector('.channels-title h2').textContent = translations[lang].followTitle;
-                document.querySelector('.channels-title p').textContent = translations[lang].followDesc;
-                document.querySelector('.tiktok span').textContent = translations[lang].tiktokHandle;
-                document.querySelector('.instagram span').textContent = translations[lang].instagramHandle;
+                document.querySelector('.channels-title h2').textContent = t.followTitle;
+                document.querySelector('.channels-title p').textContent = t.followDesc;
+                document.querySelector('.tiktok span').textContent = t.tiktokHandle;
+                document.querySelectorAll('.instagram span').forEach(s => s.textContent = t.instagramHandle);
                 
                 // Update contact section
-                document.querySelectorAll('.whatsapp-btn')[0].innerHTML = `<i class="fab fa-whatsapp"></i> ${translations[lang].whatsapp}`;
-                document.querySelectorAll('.whatsapp-btn')[1].innerHTML = `<i class="fab fa-whatsapp"></i> ${translations[lang].whatsapp}`;
-                document.querySelectorAll('.whatsapp-btn')[2].innerHTML = `<i class="fab fa-whatsapp"></i> ${translations[lang].whatsapp}`;
-                document.querySelector('.copyright').innerHTML = translations[lang].copyright;
+                document.querySelector('.contact-container h2').textContent = t.contactTitle;
+                document.querySelector('.copyright').innerHTML = t.copyright;
             }
-            });
-            
-           
+        });
     </script>
 </body>
 </html>
+
+
